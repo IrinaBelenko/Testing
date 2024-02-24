@@ -5,6 +5,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.setMain
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -34,6 +35,11 @@ class MyViewModelTest {
         runBlocking {
             Mockito.`when`(repository.getWeather()).thenReturn(successfulResponse)
         }
+        viewModel.getWeather()
+        Assert.assertEquals(MyViewModel.WeatherState.NoData, eventList[0])
+        Assert.assertEquals(MyViewModel.WeatherState.Processing, eventList[1])
+        val weatherState = eventList[2] as MyViewModel.WeatherState.UpdatedData
+        Assert.assertEquals("21", weatherState.temperature)
     }
 
     @Test
@@ -48,6 +54,11 @@ class MyViewModelTest {
         runBlocking {
             Mockito.`when`(repository.getWeather()).thenReturn(nullResponse)
         }
+
+        viewModel.getWeather()
+        Assert.assertEquals(MyViewModel.WeatherState.NoData, eventList[0])
+        Assert.assertEquals(MyViewModel.WeatherState.Processing, eventList[1])
+        Assert.assertEquals(MyViewModel.WeatherState.Error, eventList[2])
     }
 
 }

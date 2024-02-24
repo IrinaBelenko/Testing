@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
            GlobalScope.launch(Dispatchers.Main) {label.text = "pros"
                delay(2000)
-               label.text = "Hello User!"}
+               label.text = R.string.hello_user.toString()}
 
         }
     }

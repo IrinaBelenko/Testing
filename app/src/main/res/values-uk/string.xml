@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Тестування</string>
+    <string name="hello_world">Привіт світ</string>
+    <string name="hello_user">Привіт користувач</string>
 </resources>

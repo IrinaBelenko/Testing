@@ -20,7 +20,7 @@ class MainActivityTest {
     @Test
     fun checkTextView() {
         Espresso.onView(ViewMatchers.withId(R.id.helloTextView))
-            .check(ViewAssertions.matches(ViewMatchers.withText(R.string.app_name)))
+            .check(ViewAssertions.matches(ViewMatchers.withText(R.string.hello_world)))
     }
 
     @Test
@@ -30,7 +30,7 @@ class MainActivityTest {
         GlobalScope.launch(Dispatchers.Main) {
             delay(2110)
             Espresso.onView(ViewMatchers.withId(R.id.helloTextView))
-                .check(ViewAssertions.matches(ViewMatchers.withText("Hello User!")))
+                .check(ViewAssertions.matches(ViewMatchers.withText(R.string.hello_user)))
         }
     }
 
