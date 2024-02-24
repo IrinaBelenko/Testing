@@ -16,4 +16,10 @@ class PasswordValidatorTest {
         Assert.assertEquals(validator.validate(""), false)
     }
 
+    @Test
+    fun if_password_more_than_7_and_less_than_32_symbols_return_true() {
+        val validator = PasswordValidator()
+        Assert.assertEquals(validator.validate("12345678"), true)
+    }
+
 }

@@ -9,9 +9,9 @@ class PasswordValidator {
         if (password?.isEmpty() == true) {
             return false
         }
+        if (password?.length in 33..7) return false
 
         return true
     }
-
 
 }
